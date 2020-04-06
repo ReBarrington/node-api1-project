@@ -23,7 +23,16 @@ server.get("/", (req, res) => {
 server.get("/api/users", (req, res) => {
     res.json(users);
 })
-
+// Creates a user using the information sent inside the request body.
+server.post("/api/users", (req, res) => {
+    const userInfo = req.body;
+    if (userInfo.name == null || userInfo.bio == null){
+        res.status(400).json({ errorMessage: "Please provide name and bio for the user."})
+    } else {
+        users.push(userInfo);
+        res.status(201).json(users);
+    }
+})
 
 
 const port = 5000; // the server is running on http://localhost:5000
