@@ -10,13 +10,21 @@ let users = [
 ];
 
 // middleware 
+
 server.use(express.json()); // teaches the server to parse JSON from the body
 
 // endpoints
+
 server.get("/", (req, res) => {
     res.json({ api: "running....." });
   });
 
-  
+// Returns an array users.
+server.get("/api/users", (req, res) => {
+    res.json(users);
+})
+
+
+
 const port = 5000; // the server is running on http://localhost:5000
 server.listen(port, () => console.log(`\n== api on port ${port} ==\n`));
