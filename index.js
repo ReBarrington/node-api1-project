@@ -85,7 +85,6 @@ server.delete("/api/users/:id", (req, res) => {
     } else {
         res.status(404).json({ message: "The user with the specified ID does not exist."})
     }
-    // How do you check if there's an error in removing the user from the database (500)?
 })
 
 
