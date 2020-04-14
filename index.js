@@ -34,11 +34,11 @@ server.get("/api/users", (req, res) => {
 // Creates a user using the information sent inside the request body:
 server.post("/api/users", (req, res) => {
     const userInfo = req.body;
-    if (userInfo.name == null || userInfo.bio == null){
+    if (!userInfo.name|| !userInfo.bio){
         // if missing name or bio, 400 (Bad Request)
         res.status(400).json({ errorMessage: "Please provide name and bio for the user."})
     } else {
-        // if valid: save new user to database, 201 (Created)
+        // if valid: try to save new user to database, 201 (Created)
         try {
             users.push(userInfo);
             res.status(201).json(users);
